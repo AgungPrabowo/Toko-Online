@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_login extends CI_Model {
 
-	public function cekLogin($username,$password)
+	function cekLogin($username,$password)
 	{
 		// generate password ke md5
 		$pwd 	= md5($password);

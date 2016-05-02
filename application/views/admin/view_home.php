@@ -360,7 +360,7 @@
 					</div>
 				</div><!--#sidebar-shortcuts-->
 
-				<?=$this->load->view('admin/view_menu'); ?>
+				<?php $this->load->view('admin/view_menu'); ?>
 
 				<div class="sidebar-collapse" id="sidebar-collapse">
 					<i class="icon-double-angle-left"></i>
@@ -400,7 +400,7 @@
 						<div class="span12">
 							<!--PAGE CONTENT BEGINS-->
 
-							<?=$this->load->view($content); ?>
+							<?php $this->load->view($content); ?>
 
 							<!--PAGE CONTENT ENDS-->
 						</div><!--/.span-->
