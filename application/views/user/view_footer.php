@@ -6,12 +6,11 @@
                 <div class="row">
                     <!-- About -->
                     <div class="col-md-4">
-                        <h4 class="font-alt mt0">ABOUT US</h4>
-                        <p>Adminre is a clean and flat backend and frontend theme build with Twitter bootstrap</p>
-                        <p> Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
-                        <a href="javascript:void(0);" class="text-primary">Learn More</a>
+                        <h4 class="font-alt mt0">Tentang Kami</h4>
+                        <p>Kami adalah Penjual berbagai merek dan jenis GPS. Kami memiliki Ijin Postel Resmi,</p>
+                        <p>lihat Sertifikasi Postel. Kami menjual GPS Tracker berkualitas dan berkerjasama </p>
+                        <p>dengan pabrikan terkemuka, seperti MEITRACK dan CONCOX.</p>
+                        <a href="javascript:void(0);" class="text-primary">Read more</a>
                     </div>
                     <div class="visible-sm visible-xs" style="margin-bottom:25px;"></div>
                     <!--/ About -->

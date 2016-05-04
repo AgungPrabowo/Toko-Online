@@ -291,77 +291,37 @@
                     <!-- START nav collapse -->
                     <div class="collapse navbar-collapse navbar-collapse-alt" id="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown ">
-                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
+                            <li>
+                                <a href="<?=site_url();?>" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
                                     <span class="meta">
-                                        <span class="text">HOME</span>
-                                        <span class="caret"></span>
+                                        <span class="text">Home</span>
                                     </span>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-alt">
-                                    <li><a href="index.html">Layer Slider</a></li>
-                                    <li><a href="index2.html">Parallax Background</a></li>
-                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
+                                    <span class="meta">
+                                        <span class="text">Tentang Kami</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
+                                    <span class="meta">
+                                        <span class="text">Hubungi Kami</span>
+                                    </span>
+                                </a>
                             </li>
                             <li class="dropdown ">
                                 <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
                                     <span class="meta">
-                                        <span class="text">PAGES</span>
+                                        <span class="text">Download</span>
                                         <span class="caret"></span>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-alt">
-                                    <li><a href="page-about.html">About Us</a></li>
-                                    <li><a href="page-contact.html">Contact Us</a></li>
-                                    <li><a href="page-left-sidebar.html">Left Sidebar</a></li>
-                                    <li><a href="page-right-sidebar.html">Right Sidebar</a></li>
-                                    <li><a href="page-account-register.html">Account Register</a></li>
-                                    <li><a href="page-login.html">Login</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown ">
-                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
-                                    <span class="meta">
-                                        <span class="text">BLOG</span>
-                                        <span class="caret"></span>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-alt">
-                                    <li><a href="blog-large.html">Large</a></li>
-                                    <li><a href="blog-medium.html">Medium</a></li>
-                                    <li><a href="blog-single.html">Single</a></li>
-                                    <li><a href="blog-left-sidebar.html">Left sidebar</a></li>
-                                    <li><a href="blog-right-sidebar.html">Right sidebar</a></li>
-                                    <li><a href="blog-masonry.html">Masonry</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown ">
-                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
-                                    <span class="meta">
-                                        <span class="text">PORTFOLIO</span>
-                                        <span class="caret"></span>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-alt">
-                                    <li><a href="portfolio-2-columns.html">2 Columns</a></li>
-                                    <li><a href="portfolio-3-columns.html">3 Columns</a></li>
-                                    <li><a href="portfolio-4-columns.html">4 Columns</a></li>
-                                    <li><a href="portfolio-single.html">Single</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle dropdown-hover" data-toggle="dropdown">
-                                    <span class="meta">
-                                        <span class="text">SHOP</span>
-                                        <span class="caret"></span>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-alt">
-                                    <li><a href="shop.html">Default</a></li>
-                                    <li><a href="shop-item-detail.html">Item detail</a></li>
-                                    <li><a href="shop-left-sidebar.html">Left sidebar</a></li>
-                                    <li><a href="shop-right-sidebar.html">Right sidebar</a></li>
-                                    <li><a href="shop-shopping-cart.html">Shopping cart</a></li>
+                                    <li><a href="#">GT06N Commands</a></li>
+                                    <li><a href="#">MVT Series Commands</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -373,6 +333,16 @@
         </header>
         <!--/ END Template Header -->
 
+        <?php
+
+        if($this->uri->total_segments() == 0)
+        {
+
+        }
+        else
+        {
+
+        ?>
         <!-- START Template Main -->
         <section id="main" role="main">
             <!-- START page header -->
@@ -396,5 +366,6 @@
                     </div>
                 </div>
             </section>
+            <?php };?>
             <div class="clearfix"></div>
             <!--/ END page header -->
