@@ -1,3 +1,16 @@
+<script>
+	
+	$('input[name="layanan"]').on('click', function(){
+		// mengambil nilai setelah tanda koma (,)
+	    // mencari total
+		var ongkir = $('input[name="layanan"]:checked').val().split(',').pop();
+	    var sub_total = $('#sub-total').text().replace( /[\,]/g , '');
+	    var total     = parseInt(sub_total.substring(3, sub_total.length)) + parseInt(ongkir); // cari total dan convert string ke parseInt
+		$('#ongkir').html('Rp. '+numeral(ongkir).format('0,0'));
+	    $('#total').html('Rp. '+numeral(total).format('0,0'));
+	});
+
+</script>
  <label class="col-sm-2 control-label">Layanan</label>
  <div class="col-md-5">
  <?php
@@ -7,7 +20,7 @@
 
 	 <label>
 	 	<!-- nilai dari layanan digabungkan dengan biaya kirim -->
-	 	<input type="radio" name="layanan" value="<?=$data['rajaongkir']['results'][$i]['costs'][$j]['service'];?>,<?=$data['rajaongkir']['results'][$i]['costs'][$j]['cost'][0]['value'];?>" 
+	 	<input type="radio" id="total-ongkir" class="<?=$data['rajaongkir']['results'][$i]['costs'][$j]['cost'][0]['value'];?>" name="layanan" value="<?=$data['rajaongkir']['results'][$i]['costs'][$j]['service'];?>,<?=$data['rajaongkir']['results'][$i]['costs'][$j]['cost'][0]['value'];?>" 
 	 											  data-parsley-group="metode-pengiriman" data-parsley-required>
 	 	<b><?=$data['rajaongkir']['results'][$i]['costs'][$j]['service'];?></b>
 	 	<span style="float:right">

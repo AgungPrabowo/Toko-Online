@@ -16,7 +16,7 @@ LAST UPDATE: 2015/01/05
         <!-- START META SECTION -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Adminre - frontend</title>
+        <title>Top Tracker Store</title>
         <meta name="author" content="pampersdry.info">
         <meta name="description" content="Adminre is a clean and flat backend and frontend theme build with twitter bootstrap">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -25,7 +25,7 @@ LAST UPDATE: 2015/01/05
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=base_url();?>assets/front-end/image/touch/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url();?>assets/front-end/image/touch/apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?=base_url();?>assets/front-end/image/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" href="<?=base_url();?>assets/front-end/image/favicon.ico">
+        <link rel="shortcut icon" href="<?=base_url();?>assets/images/favicon.png">
         <!--/ END META SECTION -->
 
         <!-- START STYLESHEETS -->

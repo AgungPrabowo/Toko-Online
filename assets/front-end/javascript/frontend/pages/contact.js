@@ -23,12 +23,12 @@
         // ================================
         var marker = new GMaps({
             el: '#gmaps-marker',
-            lat: -12.043333,
-            lng: -77.028333
+            lat: -7.0011238,
+            lng: 110.3362891
         });
         marker.addMarker({
-            lat: -12.042,
-            lng: -77.028333,
+            lat: -7.0011238,
+            lng: 110.3362891,
             title: 'Marker with InfoWindow',
             infoWindow: {
                 content: '<p>HTML Content</p>'

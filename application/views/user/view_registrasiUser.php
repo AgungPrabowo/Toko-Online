@@ -29,13 +29,13 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-header text-center">
-                                <h1 class="section-title font-alt mb25">Create your Account</h1>
+                                <h1 class="section-title font-alt mb25">Membuat Akun Baru</h1>
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <h4 class="thin text-muted text-center">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+<!--                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                             tempor incididunt ut labore et dolore magna aliqua..
-                                        </h4>
+ -->                                        </h4>
                                     </div>
                                 </div>
                             </div>
@@ -114,14 +114,14 @@ $(document).ready(function(){
                                         <label class="control-label">Username</label>
                                         <div class="has-icon pull-left">
                                         	<input type="hidden" name="id_">
-                                            <input type="text" class="form-control" name="username" data-parsley-required>
+                                            <input type="text" class="form-control" name="username" required>
                                             <i class="ico-user2 form-control-icon"></i>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Password</label>
                                         <div class="has-icon pull-left">
-                                            <input type="password" class="form-control" name="pass" data-parsley-required>
+                                            <input type="password" class="form-control" name="pass" required>
                                             <i class="ico-key2 form-control-icon"></i>
                                         </div>
                                     </div>
@@ -133,9 +133,16 @@ $(document).ready(function(){
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">Nama Lengkap</label>
+                                        <label class="control-label">Nama Depan</label>
                                         <div class="has-icon pull-left">
-                                            <input type="text" class="form-control" name="nama_user" data-parsley-required>
+                                            <input type="text" class="form-control" name="nama_depan" required>
+                                            <i class="ico-user2 form-control-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Nama Belakang</label>
+                                        <div class="has-icon pull-left">
+                                            <input type="text" class="form-control" name="nama_belakang" required>
                                             <i class="ico-user2 form-control-icon"></i>
                                         </div>
                                     </div>
@@ -149,7 +156,7 @@ $(document).ready(function(){
                                     <div class="form-group">
                                         <label class="control-label">Provinsi</label>
                                         <select class="form-control" id="provinsi" name="provinsi">
-                                        	<option value="0">---Pilih Provinsi</option>
+                                        	<option value="0">---PILIH PROVINSI---</option>
 								                <?php foreach($provinsi->result() as $prov): ?>
 								                <option value="<?=$prov->id;?>"><?=$prov->name;?></option>
 								                <?php endforeach; ?>
@@ -158,17 +165,17 @@ $(document).ready(function(){
                                     <div class="form-group">
                                         <label class="control-label">Kota</label>
                                         <select class="form-control" id="kota" name="kota">
-                                        	<option value="0">---Pilih Kota---</option>
+                                        	<option value="0">---PILIH KOTA---</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">Nomor Telp</label>
+                                        <label class="control-label">Nomor Telephone</label>
                                         <div class="has-icon pull-left">
-                                            <input type="text" class="form-control" name="no_telp" data-parsley-required>
+                                            <input type="text" class="form-control" name="no_telp" required>
                                             <i class="ico-phone form-control-icon"></i>
                                         </div>
                                     </div>
-                                    <p class="semibold text-muted">To confirm and activate your new account, we will need to send the activation code to your e-mail.</p>
+                                    <p class="semibold text-muted">Untuk aktivasi akun anda yang baru, kami akan mengirim pesan aktivasi di email anda</p>
                                     <div class="form-group">
                                         <label class="control-label">Email</label>
                                         <div class="has-icon pull-left">
@@ -176,7 +183,7 @@ $(document).ready(function(){
                                             <i class="ico-envelop form-control-icon"></i>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+<!--                                     <div class="form-group">
                                         <div class="checkbox custom-checkbox">  
                                             <input type="checkbox" name="agree" id="agree" value="1">  
                                             <label for="agree">&nbsp;&nbsp;I agree to the <a class="semibold" href="javascript:void(0);">Term Of Services</a></label>   
@@ -188,9 +195,9 @@ $(document).ready(function(){
                                             <label for="news">&nbsp;&nbsp;Send me Newsletters.</label>   
                                         </div>
                                     </div>
-                                </div>
+ -->                                </div>
                                 <div class="panel-footer">
-                                    <button type="submit" class="btn btn-block btn-lg btn-success"><span class="semibold">Daftar</span></button>
+                                    <button type="submit" class="btn btn-block btn-lg btn-primary"><span class="semibold">Daftar</span></button>
                                 </div>
                             </form>
                             <!-- Register form -->

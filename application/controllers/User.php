@@ -8,18 +8,42 @@ class User extends CI_Controller {
 		
 	}
 
-	function checkout($id_user=0)
+	function checkout()
 	{
-		$query					= $this->Model_user->getUser($id_user);
-		$data['id_user']		= $id_user;
-		$data['berat']			= $this->cart->total_items();
-		$data['nama_depan']		= $query->nama_depan;
-		$data['nama_belakang']	= $query->nama_belakang;
-		$data['alamat']			= $query->alamat;
-		$data['no_telp']		= $query->no_telp;
-		$data['kode_pos']		= $query->kode_pos;
-		$data['status']			= 'Tertunda';
-		$data['link']			= '<h1>Alamat Pengiriman Anda</h1>';
+		$id_user = $this->session->userdata('id');
+		if(isset($id_user))
+		{
+			$query					= $this->Model_user->getUser($id_user);
+			$data['id_user']		= $id_user;
+			$data['berat']			= $this->cart->total_items();
+			$data['nama_depan']		= $query->nama_depan;
+			$data['nama_belakang']	= $query->nama_belakang;
+			$data['alamat']			= $query->alamat;
+			$data['no_telp']		= $query->no_telp;
+			$data['kode_pos']		= $query->kode_pos;
+			$data['kota1']			= $query->id_regencies;
+			$data['provinsi1']		= $query->id_provinces;
+			$data['provinsi'] 		= $this->db->get('provinces');
+			$data['kota']	 		= $this->db->get('regencies');
+			$data['status']			= 'Tertunda';
+			$data['link']			= '<h1>Alamat Pengiriman Anda</h1>';
+		}
+		else
+		{
+			$data['id_user']		= '';
+			$data['berat']			= $this->cart->total_items();
+			$data['nama_depan']		= '';
+			$data['nama_belakang']	= '';
+			$data['alamat']			= '';
+			$data['no_telp']		= '';
+			$data['kode_pos']		= '';
+			$data['provinsi'] 		= $this->db->get('provinces');
+			$data['kota']	 		= $this->db->get('regencies');
+			$data['kota1']			= '';
+			$data['provinsi1']		= '';
+			$data['status']			= 'Tertunda';
+			$data['link']			= '<h1>Alamat Pengiriman Anda</h1>';
+		}
 
 		$this->load->view('user/view_checkout', $data);
 	}
@@ -111,7 +135,6 @@ class User extends CI_Controller {
 		$data['kode_pos']		= $this->input->post('kode-pos');
 		$data['id_province']	= $this->input->post('id_provinces');
 		$data['id_regencies']	= $this->input->post('id_regencies');
-		$data['id_districts']	= $this->input->post('id_districts');
 		$data['telp']			= $this->input->post('telp');	
 		$data['note-kirim']		= $this->input->post('note-kirim');
 		$data['note-transfer']	= $this->input->post('note-transfer');

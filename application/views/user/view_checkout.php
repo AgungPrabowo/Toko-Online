@@ -2,9 +2,27 @@
 <link rel="stylesheet" href="<?=base_url('assets/front-end/plugins/steps/css/jquery-steps.css');?>">
 <link rel="stylesheet" type="text/css" href="<?=base_url('assets/js/jquery-easyui-1.4.4/themes/black/easyui.css');?>">
 <script type="text/javascript" src="<?=base_url('assets/js/jquery-easyui-1.4.4/jquery.min.js');?>"></script>
-<script type="text/javascript" src="<?=base_url();?>assets/front-end/javascript/backend/forms/wizard.js"></script>        
+<script type="text/javascript" src="<?=base_url('assets/js/numeral.min.js');?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/front-end/javascript/backend/forms/wizard.js');?>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+
+//ambil id/nilai PROVINSI dan kirim ke function getkota jika sukses ambil data getkota letakan di #kota dan #kota1
+  $("#provinsi").change(function(){
+    var key = $("#provinsi").val();
+    var url = '<?=site_url();?>/home/getKota/'+key;
+
+
+    $.ajax({
+      type    : 'POST',
+      url     : '<?=site_url();?>/home/getKota/'+key,
+      success : function(){
+        $.get(url).done(function(data){
+          $("#kota").html(data);
+            });
+      }
+    });
+  });
 
   $('#destination').combobox({
     onSelect : function(){
@@ -21,8 +39,6 @@ $(document).ready(function(){
           // ambil biaya ongkir
           $.get('<?=site_url();?>/user/result_ongkir/'+origin+'/'+destination+'/'+courier+'/'+key+'/'+weight,function(data){
             $('#result').html(data);
-            $('small').clone().appendTo('#kirim');
-            $('#ongkir-total').clone().appndTo('#total-ongkir');
         });
       }
       else
@@ -35,6 +51,10 @@ $(document).ready(function(){
    $('#simpan').click(function(){
     $('form').submit();
    });
+
+    var prov = $("#provinsi1").val();
+    $("#provinsi").val(prov).prop({selected});
+
 
   $('#courier').change(function(){
   var origin      = $('#origin').val();
@@ -55,8 +75,6 @@ $(document).ready(function(){
       // ambil biaya ongkir
       $.get('<?=site_url();?>/user/result_ongkir/'+origin+'/'+destination+'/'+courier+'/'+key+'/'+weight,function(data){
         $('#result').html(data);
-        $('small').clone().appendTo('#kirim');
-        $('#ongkir-total').clone().appndTo('#total-ongkir');
       });
     }
   });
@@ -112,18 +130,16 @@ $(document).ready(function(){
                                             <input type="text" name="kode-pos" class="form-control mb5" placeholder="Kode Pos" value="<?=$kode_pos;?>" data-parsley-group="informasi-penagihan" data-parsley-required>
                                         </div>
                                         <div class="col-sm-6">
-                                            <select name="id_regencies" class="form-control mb5" data-parsley-group="informasi-penagihaninformasi-penagihan" data-parsley-required>
-                                                <option value="0">Kota</option>
+                                            <select name="id_regencies" id="kota" class="form-control mb5" data-parsley-group="informasi-penagihan" data-parsley-required>
+                                                <option value="">--PILIH KOTA---</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
-                                            <select name="id_provinces" class="form-control" data-parsley-group="informasi-penagihan" data-parsley-required>
-                                                <option value="0">Provinsi</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select name="id_districts" class="form-control" data-parsley-group="informasi-penagihan" data-parsley-required>
-                                                <option value="0">Kecamatan</option>
+                                            <select name="id_provinces" id="provinsi" class="form-control" data-parsley-group="informasi-penagihan" data-parsley-required>
+                                                    <option value="">--PILIH PROVINSI---</option>
+                                                <?php foreach($provinsi->result() as $prov): ?>
+                                                    <option value="<?=$prov->id;?>"><?=$prov->name;?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -142,6 +158,8 @@ $(document).ready(function(){
                                    <input type="hidden" name="origin" id="origin" value="399">
                                    <input type="hidden" name="destination" id="destination1">
                                    <input type="hidden" id="berat" value="<?=$berat;?>000">
+                                   <input type="hidden" id="kota1" value="<?=$kota1;?>">
+                                   <input type="hidden" id="provinsi1" value="<?=$provinsi1;?>">
                                    <input class="easyui-combobox" id="destination" prompt="Kota Asal Penerima" style="width:100%" data-options="
                                    valueField: 'city_id',
                                    textField: 'city_name',
@@ -259,11 +277,10 @@ $(document).ready(function(){
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th width="15%">Gambar</th>
                                                     <th>Nama Produk</th>
-                                                    <th width="15%">Kuantiti</th>
-                                                    <th width="15%">Harga</th>
-                                                    <th width="5%">Total</th>
+                                                    <th width="20%">Kuantiti</th>
+                                                    <th width="20%">Harga</th>
+                                                    <th width="10%">Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -276,21 +293,6 @@ $(document).ready(function(){
 
                                                 <tr>
                                                     <td>
-                                                        <!-- thumbnail -->
-                                                        <div class="thumbnail nm">
-                                                            <!-- media -->
-                                                            <div class="media">
-                                                                <!-- indicator -->
-                                                                <div class="indicator"><span class="spinner"></span></div>
-                                                                <!--/ indicator -->
-                                    
-                                                                <img data-toggle="unveil" src="<?=base_url('assets/images/produk/'.$gambar->gambar);?>" alt="Gambar Produk" width="100%" />
-                                                            </div>
-                                                            <!--/ media -->
-                                                        </div>
-                                                        <!--/ thumbnail -->
-                                                    </td>
-                                                    <td>
                                                         <h4 class="mt0"><?=$items['name'];?></h4>
                                                     </td>
                                                     <td>
@@ -298,29 +300,35 @@ $(document).ready(function(){
                                                     </td>
                                                     <td>
                                                         <?php $total_harga = $total_harga + $items['subtotal'];?>
-                                                        <h4 class="font-alt text-primary nm"><?=$items['subtotal'];?></h4>
+                                                        <h4 class="font-alt text-primary nm">Rp. <?=number_format($items['subtotal'],0, '', ',');?></h4>
                                                     </td>
                                                     <td>
-                                                        <?=$items['subtotal'] * $items['qty'];?>
+                                                        Rp. <?=number_format($items['subtotal'] * $items['qty'],0, '', ',');?>
                                                     </td>
                                                 </tr>
 
                                                 <?php endforeach; ?>
 
                                                 <tr>
-                                                    <td colspan="4">
+                                                    <td colspan="3">
                                                         <b style="float:right">Sub-Total :</b>
                                                     </td>
+                                                    <td id="sub-total">Rp. <?=number_format($total_harga,0, '', ',');?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <b style="float:right">Ongkir :</b>
+                                                    </td>
                                                     <td>
-                                                        <?=$total_harga;?>
+                                                        <div id="ongkir"></div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="4">
-                                                        <div id="kirim" style="float:right"></div>
+                                                    <td colspan="3">
+                                                        <b style="float:right">Total :</b>
                                                     </td>
-                                                    <td>
-                                                        <div id="total-ongkir"></div>
+                                                    <td id="total">
+                                                        
                                                     </td>
                                                 </tr>
 
@@ -338,16 +346,22 @@ $(document).ready(function(){
                 <!--/ END Panel -->
             </div>
         </div>
-        <!--/ END row -->
+        <!--/ END row --> 
 
     <!-- START To Top Scroller -->
     <a href="#" class="totop animation" data-toggle="waypoints totop" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="50%"><i class="ico-angle-up"></i></a>
     <!--/ END To Top Scroller -->
-</section>
+</section><br><br><br>
 <!--/ END Template Main -->
-
-
 <?php $this->load->view('user/view_footer');?>
+<script>
+$(function(){
+    var kota = $("#kota1").val();
+
+    $("#kota").val(kota).prop({selected});
+
+});
+</script>
 <!-- Plugins and page level script : optional -->
 <script type="text/javascript" src="<?=base_url();?>assets/front-end/plugins/steps/js/jquery-steps.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/front-end/plugins/parsley/js/parsley.js"></script>

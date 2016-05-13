@@ -45,9 +45,13 @@
 	</div> 
 
 	<div class="control-group">
-		<label class="control-label">Cover</label>
+		<label class="control-label">Gambar</label>
 		<div>
-			<input type="file" id="id-input-file-2" name="userfile" id="userfile">
+			<input type="file" id="id-input-file-1" name="userfile[]" id="userfile">
+			<input type="file" id="id-input-file-2" name="userfile[]" id="userfile">
+			<input type="file" id="id-input-file-3" name="userfile[]" id="userfile">
+			<input type="file" id="id-input-file-4" name="userfile[]" id="userfile">
+			<input type="file" id="id-input-file-5" name="userfile[]" id="userfile">
 		</div>
 	</div> 
 
@@ -57,7 +61,55 @@
 
 <script type="text/javascript">
 	$(function() {
+		$('#id-input-file-1').ace_file_input({
+			no_file:'Tidak ada File ...',
+			btn_choose:'Pilih',
+			btn_change:'Ganti',
+			droppable:false,
+			onchange:null,
+			thumbnail:false //| true | large
+			//whitelist:'gif|png|jpg|jpeg'
+			//blacklist:'exe|php'
+			//onchange:''
+			//
+		});
 		$('#id-input-file-2').ace_file_input({
+			no_file:'Tidak ada File ...',
+			btn_choose:'Pilih',
+			btn_change:'Ganti',
+			droppable:false,
+			onchange:null,
+			thumbnail:false //| true | large
+			//whitelist:'gif|png|jpg|jpeg'
+			//blacklist:'exe|php'
+			//onchange:''
+			//
+		});
+		$('#id-input-file-3').ace_file_input({
+			no_file:'Tidak ada File ...',
+			btn_choose:'Pilih',
+			btn_change:'Ganti',
+			droppable:false,
+			onchange:null,
+			thumbnail:false //| true | large
+			//whitelist:'gif|png|jpg|jpeg'
+			//blacklist:'exe|php'
+			//onchange:''
+			//
+		});
+		$('#id-input-file-4').ace_file_input({
+			no_file:'Tidak ada File ...',
+			btn_choose:'Pilih',
+			btn_change:'Ganti',
+			droppable:false,
+			onchange:null,
+			thumbnail:false //| true | large
+			//whitelist:'gif|png|jpg|jpeg'
+			//blacklist:'exe|php'
+			//onchange:''
+			//
+		});
+		$('#id-input-file-5').ace_file_input({
 			no_file:'Tidak ada File ...',
 			btn_choose:'Pilih',
 			btn_change:'Ganti',

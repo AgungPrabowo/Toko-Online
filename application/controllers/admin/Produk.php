@@ -53,35 +53,46 @@ class Produk extends CI_Controller {
 		$this->load->view('admin/view_home',$isi);
 
 	}
-
+	
 	function simpan()
 	{
-		$tipe = $this->input->post('tipe');
-		$key  = $this->input->post('id_produk');
+		$tipe 		= $this->input->post('tipe');
+		$id_produk  = $this->input->post('id_produk');
+		$array		= array();
+		$count 		= count($_FILES['userfile']['size']);
 		
 		if($tipe == "tambah")
 		{
-			$config['upload_path'] = './assets/images/produk/';
-			$config['allowed_types']= 'gif|jpg|png|jpeg';
-			$config['encrypt_name']	= TRUE;
-			$config['remove_spaces']	= TRUE;	
-			$config['max_size']     = '3000';
-			$config['max_width']  	= '3000';
-			$config['max_height']  	= '3000';
-				 
-			$this->load->library('upload', $config);
-		 
-			if ($this->upload->do_upload("userfile")) 
+	        foreach($_FILES as $key=>$value)
+			for($i=0; $i<=$count-1; $i++)
 			{
+				$_FILES['userfile']['name']		=$value['name'][$i];
+		        $_FILES['userfile']['type']    	= $value['type'][$i];
+		        $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$i];
+		        $_FILES['userfile']['error']    = $value['error'][$i];
+		        $_FILES['userfile']['size']    	= $value['size'][$i];  
+				$config['upload_path'] 			= './assets/images/produk/';
+				$config['allowed_types']		= 'gif|jpg|png|jpeg';
+				$config['encrypt_name']			= TRUE;
+				$config['remove_spaces']		= TRUE;	
+				$config['max_size']     		= '3000';
+				$config['max_width']  			= '3000';
+				$config['max_height']  			= '3000';
+					 
+				$this->load->library('upload', $config);			 
+				$this->upload->do_upload();
 				$data	 	= $this->upload->data();
+				$array[] 	= $data['file_name'];
 				 
 				/* PATH */
-				$source             = "./asset/images/produk/".$data['file_name'] ;
+				$source     = "./asset/images/produk/".$data['file_name'] ;
 					
 				// Permission Configuration
-				chmod($source, 0777) ;
+				chmod($source, 0777);
+			}
 			
-				$in_data['gambar'] 		= $data['file_name'];
+				$pecah					= implode(',', $array);
+				$in_data['gambar'] 		= $pecah;
 				$in_data['judul'] 		= $this->input->post("judul_produk");
 				$in_data['id_kategori'] = $this->input->post("kategori");
 				$in_data['harga']		= $this->input->post("harga");
@@ -96,72 +107,71 @@ class Produk extends CI_Controller {
 						
 				redirect("admin/produk");
 							
-			}
-			else
-			{
-				redirect("admin/produk/tambah");
-			}
 		}
+		// belum selesai edit
 		elseif($tipe == "edit")
 		{
 			if(empty($_FILES['userfile']['name']))
 			{
-				$data['id_produk']	= $this->input->post('id_produk');
 				$data['judul']		= $this->input->post('judul_produk');
 				$data['id_kategori']= $this->input->post('kategori');
 				$data['harga']		= $this->input->post('harga');
 				$data['stok']		= $this->input->post('stok');
 				$data['isi']		= $this->input->post('isi');
-				$data['aktif']		= $this->input->post('aktif');
 				$this->load->model('model_produk');
-				$this->model_produk->getupdate($key,$data);
-				$this->session->set_flashdata('info','Produk Berhasil diupdate');
+				$this->model_produk->getupdate($id_produk,$data);
+				$this->session->set_flashdata('info','Produk Berhasil diupdatet');
 				redirect('admin/produk');
 			}
 			else
 			{
-				$config['upload_path']		= 'assets/images/produk';
-				$config['allowed_types']	= 'gif|png|jpg|jpeg';
-				$config['encrypt_name']		= TRUE;
-				$config['remove_spaces']	= TRUE;
-				$config['max_size']			= '3000';
-				$config['max_width']		= '3000';
-				$config['max_height']		= '3000';
-				$this->load->library('upload', $config);
-
-				if($this->upload->do_upload("userfile"))
+		        foreach($_FILES as $key=>$value)
+				for($i=0; $i<=$count-1; $i++)
 				{
-					$data 	= $this->upload->data();
-					// PATH
-					$source = "./assets/images/produk".$data['file_name'];
+					$_FILES['userfile']['name']		=$value['name'][$i];
+			        $_FILES['userfile']['type']    	= $value['type'][$i];
+			        $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$i];
+			        $_FILES['userfile']['error']    = $value['error'][$i];
+			        $_FILES['userfile']['size']    	= $value['size'][$i];  
+					$config['upload_path'] 			= './assets/images/produk/';
+					$config['allowed_types']		= 'gif|jpg|png|jpeg';
+					$config['encrypt_name']			= TRUE;
+					$config['remove_spaces']		= TRUE;	
+					$config['max_size']     		= '3000';
+					$config['max_width']  			= '3000';
+					$config['max_height']  			= '3000';
+						 
+					$this->load->library('upload', $config);			 
+					$this->upload->do_upload();
+					$data	 	= $this->upload->data();
+					$array[] 	= $data['file_name'];
+					 
+				}
 
-					$in_data['gambar']		= $data['file_name'];
+					$pecah					= implode(',', $array);
+					$in_data['gambar'] 		= $pecah;
 					$in_data['judul']		= $this->input->post('judul_produk');
 					$in_data['id_kategori']	= $this->input->post('kategori');
 					$in_data['harga']		= $this->input->post('harga');
 					$in_data['stok']		= $this->input->post('stok');
 					$in_data['isi']			= $this->input->post('isi');
-					$in_data['aktif']		= $this->input->post('aktif');
 
 					$this->load->model('model_produk');
-					$this->model_produk->getupdate($key,$in_data);
+					$this->model_produk->getupdate($id_produk,$in_data);
 					$this->session->set_flashdata('info','Produk Berhasil diupdate');
+
 					redirect('admin/produk');
-				}
-				else
-				{
-					redirect('admin/produk/edit');
-				}
 			}
+
 		}
 	}
+	
 
-	function hapus()
+	function hapus($id_produk)
 	{
 		$this->Model_security->getSecurity();
 
-		$key = $this->uri->segment(4);
-		$this->model_produk->getdelete($key);
+		$this->Model_produk->getdelete($id_produk);
 		$this->session->set_flashdata('info','Produk Berhasil dihapus');
 		redirect('admin/produk');
 	}

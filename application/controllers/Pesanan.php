@@ -62,15 +62,27 @@ class Pesanan extends CI_Controller {
 		}
 	}
 
-	public function add_to_cart($key)
+	public function add_to_cart($id_produk)
 	{
-		$produk = $this->Model_produk->getdata($key);
-		$qty	= $this->input->post('qty');
+		$produk = $this->Model_produk->getdata($id_produk);
+		$qty	= $this->input->post('quantity');
 
 		// cek stok barang
 		if($produk->stok < $qty)
 		{
-			redirect(site_url('/blog/detail/'.$key));
+			redirect(site_url('/home/item_detail/'.$id_produk));
+		}
+		elseif(empty($qty))
+		{
+			$qty 	= 1;
+			$data 	= array(
+						'id'		=> $produk->id_produk,
+						'qty'		=> $qty,
+						'price'		=> $produk->harga,
+						'name'		=> $produk->judul,
+					);
+			$this->cart->insert($data);
+			redirect(site_url('/home/item_detail/'.$id_produk));
 		}
 		else
 		{
@@ -79,10 +91,9 @@ class Pesanan extends CI_Controller {
 						'qty'		=> $qty,
 						'price'		=> $produk->harga,
 						'name'		=> $produk->judul,
-						'gambar'	=> $produk->gambar
 					);
 			$this->cart->insert($data);
-			redirect(site_url());
+			redirect(site_url('/home/item_detail/'.$id_produk));
 		}
 
 	}
@@ -175,7 +186,6 @@ class Pesanan extends CI_Controller {
 		$data['id_admin']		= $this->input->post('id_admin');
 		$data['id_provinsi']	= $this->input->post('provinsi');
 		$data['id_kota']		= $this->input->post('kota');
-		$data['id_kecamatan']	= $this->input->post('kecamatan');
 		$data['catatan']		= $this->input->post('catatan');
 		$data['kurir']			= $this->input->post('courier');
 		$data['kota']			= $this->input->post('destination');

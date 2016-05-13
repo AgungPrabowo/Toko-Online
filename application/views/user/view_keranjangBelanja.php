@@ -1,4 +1,17 @@
 <?php $this->load->view($header);?>
+<script src="<?=base_url();?>assets/js/jquery-2.0.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        
+        var keranjang = '<?=$this->cart->total_items();?>';
+
+        if(keranjang == 0)
+        {
+            $('#proses-checkout').attr('disabled', 'disabled');;
+        }
+
+    });
+</script>
 <?php $this->load->view($menu);?>
 
             <!-- START Shop Content -->
@@ -8,10 +21,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-header text-center">
-                                <h1 class="section-title font-alt mb25">Shopping Cart</h1>
+                                <h1 class="section-title font-alt mb25">Keranjang Belanja</h1>
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
-                                        <h4 class="thin text-muted text-center mb30">Please review your order below</h4>
+                                        <h4 class="thin text-muted text-center mb30">Cek kembali Keranjang belanja anda di bawah ini</h4>
                                     </div>
                                 </div>
                             </div>
@@ -34,11 +47,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php if($this->cart->total_items() == 0): ?>
+                                        <tr>
+                                            <td colspan="5"><h3 class="thin text-muted text-center mb30">Keranjang Kosong</h3></td>
+                                        </tr>
 
                                         <?php 
+                                            endif;
                                             $total_harga = 0;
                                             foreach($this->cart->contents() as $items):
                                             $gambar	= $this->Model_produk->ambil_gambar($items['id']);
+                                            $pecah  = explode(',', $gambar->gambar);
                                         ?>
 
                                         <tr>
@@ -51,7 +70,7 @@
                                                         <div class="indicator"><span class="spinner"></span></div>
                                                         <!--/ indicator -->
 							
-                                                        <img data-toggle="unveil" src="<?=site_url('assets/image/shop/placeholder.jpg');?>" data-src="<?=base_url('assets/images/produk/'.$gambar->gambar);?>" alt="Photo" width="100%" />
+                                                        <img data-toggle="unveil" src="<?=base_url('assets/front-end/image/shop/placeholder.jpg');?>" data-src="<?=base_url('assets/images/produk/'.$pecah[0]);?>" alt="Photo" width="100%" />
                                                     </div>
                                                     <!--/ media -->
                                                 </div>
@@ -80,17 +99,14 @@
                         </div>
 
                         <div class="col-md-4">
-                            <h3 class="section-title font-alt mt0">Some note for you</h3>
+                            <h3 class="section-title font-alt mt0">Transfer & Pengiriman</h3>
 
-                            <p class="mb15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                            <p class="mb15">quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident.</p>
+                            <p class="mb15">Jika transfer dilakukan sebelum Pukul 10.00 WIB maka barang akan diikutkan pengiriman siang hari. </p>
+                            <p>Melakukan transfer Pukul 10.00 s/d 15.00 WIB maka barang akan dikirim sore bahkan sampai malam hari. Tergantung banyaknya pemesanan. </p>
+                            <p>Jika transfer dikirim setelah Pukul 15.00 WIB maka barang akan dikirim mengikuti pengiriman keesokan harinya.</p>
 
                             <div class="clearfix">
-                                <a href="<?=site_url('/user/checkout/'.$id_user);?>" class="btn btn-primary pull-left">Proses Checkout</a>
+                                <a href="<?=site_url('/user/checkout');?>" id="proses-checkout" class="btn btn-primary pull-left">Proses Checkout</a>
                                 <a href="<?=site_url();?>" class="btn btn-link pull-left">Lanjutkan Belanja</a>
                             </div>
                         </div>
@@ -99,129 +115,5 @@
                 </div>
             </section>
             <!--/ END Shop Content -->
-
-            <!-- START Related Product -->
-            <section class="section bgcolor-white">
-                <div class="container">
-                    <!-- START Section Header -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-header text-center">
-                                <h1 class="section-title font-alt mb25">Related Product</h1>
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <h4 class="thin text-muted text-center">Hey!, we have some related products just for you.</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/ END Section Header -->
-
-                    <!-- START row -->
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="panel no-border overflow-hidden">
-                                <!-- thumbnail -->
-                                <div class="thumbnail nm">
-                                    <!-- media -->
-                                    <div class="media">
-                                        <!-- indicator -->
-                                        <div class="indicator"><span class="spinner"></span></div>
-                                        <!--/ indicator -->
-
-                                        <img data-toggle="unveil" src="<?=base_url();?>assets/front-end/image/shop/placeholder.jpg" data-src="<?=base_url();?>assets/front-end/image/shop/item1.jpg" alt="Photo" width="100%" />
-
-                                        <!-- meta -->
-                                        <span class="meta meta-hover bottom light">
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star5 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <!--/ media -->
-                                </div>
-                                <!--/ thumbnail -->
-                                <!-- Meta -->
-                                <div class="panel-footer" style="padding:25px;border:0;">
-                                    <h4 class="text-center mt0"><a href="#" class="text-default">505 Fit Jeans</a></h4>
-                                    <h3 class="font-alt text-center text-accent mt0">$102.50</h3>
-                                </div>
-                                <!--/ Meta -->
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="panel no-border overflow-hidden">
-                                <!-- thumbnail -->
-                                <div class="thumbnail nm">
-                                    <!-- media -->
-                                    <div class="media">
-                                        <!-- indicator -->
-                                        <div class="indicator"><span class="spinner"></span></div>
-                                        <!--/ indicator -->
-
-                                        <img data-toggle="unveil" src="<?=base_url();?>assets/front-end/image/shop/placeholder.jpg" data-src="<?=base_url();?>assets/front-end/image/shop/item7.jpg" alt="Photo" width="100%" />
-
-                                        <!-- meta -->
-                                        <span class="meta meta-hover bottom light">
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star5 text-primary"></i>
-                                            <i class="ico-star4 text-primary"></i>
-                                            <i class="ico-star4 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <!--/ media -->
-                                </div>
-                                <!--/ thumbnail -->
-                                <!-- Meta -->
-                                <div class="panel-footer" style="padding:25px;border:0;">
-                                    <h4 class="text-center mt0"><a href="#" class="text-default">Long Sleeve Tee</a></h4>
-                                    <h3 class="font-alt text-center text-accent mt0">$42.00</h3>
-                                </div>
-                                <!--/ Meta -->
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="panel no-border overflow-hidden">
-                                <!-- thumbnail -->
-                                <div class="thumbnail nm">
-                                    <!-- media -->
-                                    <div class="media">
-                                        <!-- indicator -->
-                                        <div class="indicator"><span class="spinner"></span></div>
-                                        <!--/ indicator -->
-
-                                        <img data-toggle="unveil" src="<?=base_url();?>assets/front-end/image/shop/placeholder.jpg" data-src="<?=base_url();?>assets/front-end/image/shop/item3.jpg" alt="Photo" width="100%" />
-
-                                        <!-- meta -->
-                                        <span class="meta meta-hover bottom light">
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                            <i class="ico-star6 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <!--/ media -->
-                                </div>
-                                <!--/ thumbnail -->
-                                <!-- Meta -->
-                                <div class="panel-footer" style="padding:25px;border:0;">
-                                    <h4 class="text-center mt0"><a href="#" class="text-default">Chino Shorts</a></h4>
-                                    <h3 class="font-alt text-center text-accent mt0">$99.00</h3>
-                                </div>
-                                <!--/ Meta -->
-                            </div>
-                        </div>
-                    </div>
-                    <!--/ END row -->
-                </div>
-            </section>
-            <!--/ END Related Product -->
 
 <?php $this->load->view($footer);?>

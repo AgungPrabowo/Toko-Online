@@ -92,10 +92,9 @@ if($info):?>
 									}
 									$no = 1;
 									foreach($data_tertunda->result() as $row):
-										$query = $this->Model_pembeli->getNamaPembeli($row->id_pembeli);
 										?>
 										<td><?=$no++;?></td>
- 										<td><?=$query->nama_pembeli;?></td>
+ 										<td><?=$row->nama_depan.' '.$row->nama_belakang;?></td>
 										<td><?php
 										$qty[$no];
 										$pecah = explode(',',$qty[$no]);//konversi string ke array
@@ -185,10 +184,9 @@ if($info):?>
 									}
 									$no = 1;
 									foreach($data_terkirim->result() as $row):
-										$query = $this->Model_pembeli->getNamaPembeli($row->id_pembeli);
 									?>
 									<td><?=$no++;?></td>
-									<td><?=$query->nama_pembeli;?></td>
+									<td><?=$row->nama_depan.' '.$row->nama_belakang;?></td>
 									<td><?php
 									$qty[$no];
 									$pecah = explode(',',$qty[$no]);//konversi string ke array

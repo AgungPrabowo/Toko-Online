@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_produk extends CI_Model {
 
+	function getProduk($id_kategori)
+	{
+		$hasil = $this->db->where('id_kategori', $id_kategori)
+						  ->get('produk');
+		return $hasil;
+	}
+
 	function getdata($key)
 	{
 		$hasil = $this->db->where('id_produk',$key)

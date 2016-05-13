@@ -314,7 +314,7 @@ function lsShowNotice(lsobj,issue,ver){
 							document.createStyleSheet(skinStyle);
 							var curSkin = $('link[href="'+skinStyle+'"]');
 						}else{
-							var curSkin = $('<link rel="stylesheet" href="'+skinStyle+'" type="text/css" />').appendTo( cssContainer );
+							var curSkin = $('<link rel="stylesheet" href="http://localhost/toko-online/assets/front-end/plugins/layerslider/skins/fullwidth/skin.css" type="text/css" />').appendTo( cssContainer );
 						}
 					}
 
@@ -1042,7 +1042,7 @@ function lsShowNotice(lsobj,issue,ver){
 
 						$(this).data('src', $(this).attr('src') );
 						var src = ls.o.skinsPath+'../css/blank.gif';
-						$(this).attr('src',src);
+						$(this).attr('src','http://localhost/toko-online/assets/front-end/plugins/layerslider/css/blank.gif');
 					}
 				}else{
 					if( typeof $(this).data('src') === 'string' ){

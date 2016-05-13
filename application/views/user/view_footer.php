@@ -7,10 +7,10 @@
                     <!-- About -->
                     <div class="col-md-4">
                         <h4 class="font-alt mt0">Tentang Kami</h4>
-                        <p>Kami adalah Penjual berbagai merek dan jenis GPS. Kami memiliki Ijin Postel Resmi,</p>
-                        <p>lihat Sertifikasi Postel. Kami menjual GPS Tracker berkualitas dan berkerjasama </p>
+                        <p>Kami adalah Penjual berbagai merek dan jenis GPS. Kami memiliki Ijin Postel Resmi,
+                        lihat Sertifikasi Postel. Kami menjual GPS Tracker berkualitas dan berkerjasama </p>
                         <p>dengan pabrikan terkemuka, seperti MEITRACK dan CONCOX.</p>
-                        <a href="javascript:void(0);" class="text-primary">Read more</a>
+                        <a href="<?=site_url('/home/about');?>" class="text-primary">Read more</a>
                     </div>
                     <div class="visible-sm visible-xs" style="margin-bottom:25px;"></div>
                     <!--/ About -->
@@ -24,13 +24,6 @@
                             Semarang - 50189<br>
                             <abbr title="Phone">P:</abbr> 0857291111300
                         </address>
-                        <h4 class="font-alt mt0">STAY CONNECT</h4>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Facebook"><i class="ico-facebook2"></i></a>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Twitter"><i class="ico-twitter2"></i></a>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Vimeo"><i class="ico-vimeo"></i></a>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Flickr"><i class="ico-flickr2"></i></a>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Google+"><i class="ico-google-plus2"></i></a>
-                        <a href="javascript:void(0);" class="text-muted mr15" data-toggle="tooltip" title="Instagram"><i class="ico-instagram2"></i></a>
                     </div>
                     <div class="visible-sm visible-xs" style="margin-bottom:25px;"></div>
                     <!--/ Address + Social -->
@@ -61,7 +54,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <!-- copyright -->
-                            <p class="nm text-muted">&copy; Copyright 2014 by <a href="javascript:void(0);" class="text-white">Adminre</a>. All Rights Reserved.</p>
+                            <p class="nm text-muted">&copy; Copyright 2016 by <a href="<?=site_url();?>" class="text-white">Top Tracker Store</a>. All Rights Reserved.</p>
                             <!--/ copyright -->
                         </div>
                         <div class="col-sm-6 text-right hidden-xs">

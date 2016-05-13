@@ -8,9 +8,52 @@ class Home extends CI_Controller {
 		$data['header']	= 'user/view_header';
 		$data['footer']	= 'user/view_footer';
 		$data['menu']	= 'user/view_menu';
-		$data['produk']	= $this->Model_produk->dataproduk();
 
 		$this->load->view('user/view_index', $data);
+	}
+
+	function item_detail($id_produk)
+	{
+		$query			= $this->Model_produk->getdata($id_produk);
+		$data['header']	= 'user/view_header';
+		$data['footer']	= 'user/view_footer';
+		$data['menu']	= 'user/view_menu';
+		$data['halaman']= 'Detail Produk';
+		$data['id_produk'] = $query->id_produk;
+		$data['judul']	= $query->judul;
+		$data['harga']	= $query->harga;
+		$data['isi']	= $query->isi;
+		$data['id_kategori'] = $query->id_kategori;
+		$data['gambar']	= explode(',', $query->gambar);
+
+		$this->load->view('user/view_itemDetail', $data);
+	}
+
+	function perbaikan()
+	{
+		$data['header']	= 'user/view_header';
+		$data['footer']	= 'user/view_footer';
+		$data['menu']	= 'user/view_menu';
+
+		$this->load->view('user/view_perbaikan', $data);
+	}	
+
+	function about()
+	{
+		$data['header']	= 'user/view_header';
+		$data['footer']	= 'user/view_footer';
+		$data['menu']	= 'user/view_menu';
+
+		$this->load->view('user/view_about', $data);
+	}
+
+	function contact()
+	{
+		$data['header']	= 'user/view_header';
+		$data['footer']	= 'user/view_footer';
+		$data['menu']	= 'user/view_menu';
+
+		$this->load->view('user/view_contact', $data);
 	}
 
 	function keranjang()
@@ -18,6 +61,8 @@ class Home extends CI_Controller {
 		$data['header']		= 'user/view_header';
 		$data['footer']		= 'user/view_footer';
 		$data['menu']		= 'user/view_menu';
+		$data['halaman']	= 'Keranjang Belanja';
+		$data['judul']		= 'Keranjang Belanja';
 		$data['id_user']	= $this->session->userdata('id');
 
 		$this->load->view('user/view_keranjangBelanja', $data);
@@ -26,6 +71,8 @@ class Home extends CI_Controller {
 	function daftar()
 	{
 		$data['provinsi'] 		= $this->db->get('provinces');
+		$data['halaman']		= 'Daftar Akun Top Tracker';
+		$data['judul']			= 'Daftar Akun';
 
 		$this->load->view('user/view_registrasiUser', $data);
 	}
@@ -34,7 +81,7 @@ class Home extends CI_Controller {
 	{
 		$city	= $this->Model_wilayah->getdata_kota($key);
 
-		echo "<option value='0'>---Pilih Kota---</option>";
+		echo "<option value='0'>---PILIH KOTA---</option>";
 		foreach($city->result() as $kota):
 			echo "<option value=".$kota->id.">".$kota->name."</option>";
 		endforeach;
@@ -48,7 +95,8 @@ class Home extends CI_Controller {
 		$data['pass']					= md5($this->input->post('pass'));
 		$data['username']				= $this->input->post('username');
 		$data['no_telp'] 				= $this->input->post('no_telp');
-		$data['nama_user']				= $this->input->post('nama_user');
+		$data['nama_depan']				= $this->input->post('nama_depan');
+		$data['nama_belakang']			= $this->input->post('nama_belakang');
 		$data['id_provinces'] 			= $this->input->post('provinsi');
 		$data['id_regencies']			= $this->input->post('kota');
 		$data['alamat'] 				= $this->input->post('alamat');

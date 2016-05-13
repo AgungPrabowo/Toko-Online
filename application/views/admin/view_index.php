@@ -6,7 +6,7 @@
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+		<link rel="shortcut icon" href="<?=base_url();?>assets/images/favicon.png">
 		<!--basic styles-->
 
 		<link href="<?=base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" />
