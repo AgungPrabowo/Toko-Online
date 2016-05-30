@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 11, 2016 at 10:45 
+-- Generation Time: May 30, 2016 at 09:34 
 -- Server version: 5.6.25
 -- PHP Version: 5.5.27
 
@@ -48,7 +48,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 CREATE TABLE IF NOT EXISTS `kategori` (
   `id_kategori` int(10) NOT NULL,
   `kategori` char(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori`
@@ -57,7 +57,8 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 (1, 'Concox'),
 (2, 'Meitrack'),
-(3, 'TopFly');
+(3, 'TopFly'),
+(4, 'Server');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,6 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   `id_pesanan` int(50) NOT NULL,
   `id_province` char(2) NOT NULL,
   `id_regencies` char(4) NOT NULL,
-  `id_districts` char(7) NOT NULL,
   `id_order` char(5) NOT NULL,
   `id_user` int(10) NOT NULL,
   `nama_depan` char(25) NOT NULL,
@@ -91,22 +91,23 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   `biaya_kirim` char(20) NOT NULL,
   `metode-bayar` char(25) NOT NULL,
   `resi` char(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id_pesanan`, `id_province`, `id_regencies`, `id_districts`, `id_order`, `id_user`, `nama_depan`, `nama_belakang`, `id_produk`, `harga`, `qty`, `alamat`, `kota_tujuan`, `kode_pos`, `status`, `telp`, `total`, `tgl_beli`, `note-kirim`, `note-transfer`, `kurir`, `layanan`, `biaya_kirim`, `metode-bayar`, `resi`) VALUES
-(1, '33', '3374', '3374140', '1996', 0, '', '', '1', '1000000', '2', 'jl.bendungan 1135', '', '50245', 'TERKIRIM', '085225189497', '1000000', '1454676627', '', '', 'jne', 'yes', '10000', '0', ''),
-(2, '33', '3374', '3374140', '1996', 0, '', '', '2', '1000000', '2', 'jl.bendungan 1135', '', '50245', 'TERKIRIM', '085225189497', '1000000', '1454676627', '', '', 'jne', 'yes', '10000', '0', ''),
-(3, '0', '0', '0', '1208', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204451', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
-(4, '0', '0', '0', '8107', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204490', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
-(5, '0', '0', '0', '8107', 0, 'agung', 'prabowo', 'coba lagi', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204490', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
-(6, '0', '0', '0', '854', 0, 'agung', 'prabowo', 'coba', '1000000', '2', 'jl.bendungan 1135', 'Jakarta Barat', '50245', 'TERTUNDA', '085225189794', '2000000', '1462204683', 'coba', 'ahaa', 'jne', 'OKE', '\r\n	 											  260', '0', ''),
-(7, '0', '0', '0', '6297', 0, 'agung', 'prabowo', 'coba lagi', '1000000', '2', 'jl.bendungan 1135', 'Jakarta Barat', '50245', 'TERTUNDA', '085225189794', '2000000', '1462204839', 'asasd', 'ada', 'jne', 'JTR250', '\r\n	 											  110', '0', ''),
-(8, '0', '0', '0', '2356', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', 'TERTUNDA', '085225189794', '1000000', '1462205090', 'ada', 'ada', 'jne', 'OKE', '13000', '0', ''),
-(9, '0', '0', '0', '2391', 1, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Timur', '50245', 'TERTUNDA', '085225189794', '1000000', '1462205567', 'zdad', 'ada', 'jne', 'OKE', '13000', 'MANDIRI', '');
+INSERT INTO `pesanan` (`id_pesanan`, `id_province`, `id_regencies`, `id_order`, `id_user`, `nama_depan`, `nama_belakang`, `id_produk`, `harga`, `qty`, `alamat`, `kota_tujuan`, `kode_pos`, `status`, `telp`, `total`, `tgl_beli`, `note-kirim`, `note-transfer`, `kurir`, `layanan`, `biaya_kirim`, `metode-bayar`, `resi`) VALUES
+(1, '33', '3374', '1996', 0, '', '', '1', '1000000', '2', 'jl.bendungan 1135', '', '50245', 'TERKIRIM', '085225189497', '1000000', '1454676627', '', '', 'jne', 'yes', '10000', '0', ''),
+(2, '33', '3374', '1996', 0, '', '', '2', '1000000', '2', 'jl.bendungan 1135', '', '50245', 'TERKIRIM', '085225189497', '1000000', '1454676627', '', '', 'jne', 'yes', '10000', '0', ''),
+(3, '0', '0', '1208', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204451', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
+(4, '0', '0', '8107', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204490', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
+(5, '0', '0', '8107', 0, 'agung', 'prabowo', 'coba lagi', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', '', '085225189794', '1000000', '1462204490', NULL, NULL, 'jne', 'OKE', '\r\n	 											  260', '0', ''),
+(6, '0', '0', '854', 0, 'agung', 'prabowo', 'coba', '1000000', '2', 'jl.bendungan 1135', 'Jakarta Barat', '50245', 'TERTUNDA', '085225189794', '2000000', '1462204683', 'coba', 'ahaa', 'jne', 'OKE', '\r\n	 											  260', '0', ''),
+(7, '0', '0', '6297', 0, 'agung', 'prabowo', 'coba lagi', '1000000', '2', 'jl.bendungan 1135', 'Jakarta Barat', '50245', 'TERTUNDA', '085225189794', '2000000', '1462204839', 'asasd', 'ada', 'jne', 'JTR250', '\r\n	 											  110', '0', ''),
+(8, '0', '0', '2356', 0, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Pusat', '50245', 'TERTUNDA', '085225189794', '1000000', '1462205090', 'ada', 'ada', 'jne', 'OKE', '13000', '0', ''),
+(9, '0', '0', '2391', 1, 'agung', 'prabowo', 'coba', '1000000', '1', 'jl.bendungan 1135', 'Jakarta Timur', '50245', 'TERTUNDA', '085225189794', '1000000', '1462205567', 'zdad', 'ada', 'jne', 'OKE', '13000', 'MANDIRI', ''),
+(10, '33', '3374', '247', 0, 'a', 'a', 'GPS Tracker ET200', '500000', '1', 'a', 'Jakarta Selatan', '1', 'TERTUNDA', '1112', '500000', '1462993893', 'aaa', 'asas', 'jne', 'OKE', '13000', 'MANDIRI', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `isi` text NOT NULL,
   `gambar` text NOT NULL,
   `tanggal` int(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
@@ -133,13 +134,17 @@ INSERT INTO `produk` (`id_produk`, `id_kategori`, `judul`, `harga`, `stok`, `isi
 (1, 1, 'TR06', 900000, 10, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">Gps Tracker TR06 versi terbaru ini merupakan keluaran terbaru dari Concox yang menyempurnakan produk TR06 dengan versi sebelumnya. Versi terbarunya memiliki fitur tambahan yaitu bisa mengecek Pulsa melalui SMS.</span></p>\r\n', '1a2f650294374bc30612e8e9c1ec7860.jpg,4d9f095821175dc39b1684805d9e33b5.jpg,bb7ea7a9781d1d8caf8b690dfb7f0b97.jpg,c983ba267c87e2af011537654d9d28b4.jpg,c983ba267c87e2af011537654d9d28b4.jpg', 1461251423),
 (2, 1, 'TR02', 800000, 10, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Anda memerlukan gps tracker handal dengan harga terjangkau? bisa di monitor lewat website atau dengan sms dari Gadget/Ponsel Anda. Yang lebih pentingnya lagi yaitu cara pemasangan pun cukup mudah sekali.<br style="box-sizing: border-box; outline: none;" />\r\n	GPS Tracker TR02 hadir melindungi kendaraan Anda khususnya para pemilik sepeda motor / mobil yang khawatir kendaraannya dicuri ataupun dirampok. Dengan Web monitoring www.gps-trace.com</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	GPS Tracker yang telah didesain untuk sepeda motor Anda. Dengan Tegangan Daya yang rendah dan ukuran lebih kecil, memungkinkan Anda memasang GPS Tracker ini pada Sepeda Motor Anda.</p>\r\n', '3da9186bbebfecf4f32c791965fc3952.jpg,a17da73129d77738a64ee7aa8fa469c3.jpg,a91f9091a5b84d58f46188a28a016846.jpg,e40f5d259dd729608c6b240f872e39da.jpg,e40f5d259dd729608c6b240f872e39da.jpg', 1461336776),
 (3, 1, 'GT02D', 500000, 101, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Dapatkan GPS Tracker untuk sepeda motor, dengan teknologi Super Saving Power bisa menghemat aki motor Anda sehingga tidak ada lagi gejala aki habis dan motor tidak bisa di starter.&nbsp;<br style="box-sizing: border-box; outline: none;" />\r\n	Dengan fitur Terbaru Super saving Power arus yg dipakai hanya 1 - 2 mA jauh lebih hemat dibanding GPS Tracker tipe lain dan mulai sekarang aki motor Anda tidak akan kehabisan lagi.&nbsp;<br style="box-sizing: border-box; outline: none;" />\r\n	GPS Pelacak Kendaraan GT02D, Kami berperan dalam menyediakan GPS kepada pelanggan setia kami dengan kualitas yang sangat baik.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Untuk mobil dengan kaca film V-Cool disarankan menggunakan GPS Tracker GT02D karena sinyalnya lebih kuat dan menggunakan Antena + Chipset Khusus.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	GPS Tracker yang telah didesain untuk sepeda motor Anda. Dengan Tegangan Daya yang rendah dan ukuran lebih kecil, memungkinkan Anda memasang GPS Tracker ini pada Sepeda Motor Anda.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	NB: Hasil Test dengan tegangan 12 Volt, arus listrik yang dipakai pada Mode Power Saving adalah 1 Miliampere.</p>\r\n', '1dd11680978d96b9769c795322714a82.jpg,93b599ce4bb1f14ac17ee5b13853335a.jpg,f5b61d4c32f2c39c14bcadf5bbb65bb8.jpg,f5b61d4c32f2c39c14bcadf5bbb65bb8.jpg,f5b61d4c32f2c39c14bcadf5bbb65bb8.jpg', 1462744244),
-(4, 1, 'MVT800', 1600000, 20, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Bosan dengan GPS Tracker biasa yang ngaku Canggih??? Kita siapkan!!!<br style="box-sizing: border-box; outline: none;" />\r\n	GPS Tracker Canggih dengan fasilitas Super Lengkap!!!</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	MVT800 adalah salah satu pelacak GPS terbaru yang telah ditambahkan ke merek Meitrack. MVT800 dapat digambarkan sebagai kaliber tinggi GPS tracker, banyak fitur dan aksesoris yang menawarkan. MVT800 sangat sempurna untuk pelacakan armada karena kemampuannya untuk memantau konsumsi bahan bakar dan suhu jika diperlukan.&nbsp;<br style="box-sizing: border-box; outline: none;" />\r\n	<br style="box-sizing: border-box; outline: none;" />\r\n	Melacak kendaraan secara real time, juga memantau apa yang terjadi di dalam kabin dengan fitur listen-in, memiliki fitur percakapan dua arah dengan menambahkan aksesoris speaker dan mikrofon. MVT800, GPS pelacak kendaraan dengan salah satu yang terbaik pelacak yang tahan air untuk kendaraan, mobil ataupun alat berat di pasar saat ini.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	MVT800 adalah merek baru GPS tracker yang mendukung dua protokol Meitrack dan Meiligao protokol. Mendukung anti-pencurian mobil pribadi dan mobil dinas.</p>\r\n', '1279c5d7822a2d977e4abacd9131b7e3.jpg,e3cc0db9e49db1bda299f19a8550e8c3.jpg,0d661b1d9a4a9d901198e19e7ab4a931.jpg,97ef640a0e1b2df219d253ec1430772b.jpg,97ef640a0e1b2df219d253ec1430772b.jpg', 1462746169),
-(5, 1, 'MVT600', 1500000, 20, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Sebuah kendaraan GPS tracker benar-benar unik, yang MVT600 memiliki banyak fungsi dan fitur. The MVT600 dapat memungkinkan seseorang untuk memantau interior kendaraan dengan melampirkan kamera opsional. Kamera ini dapat mengambil snapshot ketika peristiwa tertentu terjadi seperti, mobil mulai bergerak, membuka atau menutup pintu. Jenis lain dari aksesoris dapat ditambahkan seperti sensor bahan bakar, dan bahkan pembaca RFID.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	sensor suhu sangat penting jika kendaraan memiliki unit pendingin yang perlu dipantau, sensor dapat mengirim peringatan jika suhu tiba-tiba berfluktuasi. RFID memungkinkan untuk kendaraan yang akan dioperasikan oleh individu terpilih yang membawa kartu RFID, ini merupakan salah satu ukuran keamanan yang lebih untuk memiliki kendaraan yang hanya harus dioperasikan oleh personil yang dipilih.</p>\r\n', '49c41eff3101cb6e879e7006a5e3aaf6.jpg,2d1516d8544b8f578e32c30dae845cd6.jpg,f81eb87a5e7ff44101d705fd90b4bf38.jpg,d5557d3527ada33eb9628b8249a4e7a2.jpg,d5557d3527ada33eb9628b8249a4e7a2.jpg', 1462746398),
-(6, 1, 'MVT380', 1100000, 20, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">GPS Tracker MVT 380 adalah alat pelacak GPS / GSM / GPRS yang khusus dirancang untuk mengetahui posisi kendaraan secara langsung.Dapat berguna untuk fungsi pengawasan dan pengamanan, serta menghindari dari pencurian kendaraan.</span></p>\r\n', '89ff01176d1dd758c55521a53f268bf9.jpg,b76227033f12fa722f150a6187329837.jpg,37f51beceeb10a3183f17225f7380d9d.jpg,8387558d20e44ec25dd93a5d8eab6801.jpg,8387558d20e44ec25dd93a5d8eab6801.jpg', 1462746523),
-(8, 1, 'T8803', 600000, 10, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">GPS TRACKER T8803 INI mempunyai tingkat kestabilan tinggi dari GPS dan GSM Module. Keakuratan perangkat dapat tercapai antara 5-10 meter dan tahan terhadap air.</span></p>\r\n', '6af593ed84c160bd407d58624205fafa.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg', 1462746634),
+(4, 2, 'MVT800', 1600000, 20, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Bosan dengan GPS Tracker biasa yang ngaku Canggih??? Kita siapkan!!!<br style="box-sizing: border-box; outline: none;" />\r\n	GPS Tracker Canggih dengan fasilitas Super Lengkap!!!</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	MVT800 adalah salah satu pelacak GPS terbaru yang telah ditambahkan ke merek Meitrack. MVT800 dapat digambarkan sebagai kaliber tinggi GPS tracker, banyak fitur dan aksesoris yang menawarkan. MVT800 sangat sempurna untuk pelacakan armada karena kemampuannya untuk memantau konsumsi bahan bakar dan suhu jika diperlukan.&nbsp;<br style="box-sizing: border-box; outline: none;" />\r\n	<br style="box-sizing: border-box; outline: none;" />\r\n	Melacak kendaraan secara real time, juga memantau apa yang terjadi di dalam kabin dengan fitur listen-in, memiliki fitur percakapan dua arah dengan menambahkan aksesoris speaker dan mikrofon. MVT800, GPS pelacak kendaraan dengan salah satu yang terbaik pelacak yang tahan air untuk kendaraan, mobil ataupun alat berat di pasar saat ini.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	MVT800 adalah merek baru GPS tracker yang mendukung dua protokol Meitrack dan Meiligao protokol. Mendukung anti-pencurian mobil pribadi dan mobil dinas.</p>\r\n', '1279c5d7822a2d977e4abacd9131b7e3.jpg,e3cc0db9e49db1bda299f19a8550e8c3.jpg,0d661b1d9a4a9d901198e19e7ab4a931.jpg,97ef640a0e1b2df219d253ec1430772b.jpg,97ef640a0e1b2df219d253ec1430772b.jpg', 1462746169),
+(5, 2, 'MVT600', 1500000, 20, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Sebuah kendaraan GPS tracker benar-benar unik, yang MVT600 memiliki banyak fungsi dan fitur. The MVT600 dapat memungkinkan seseorang untuk memantau interior kendaraan dengan melampirkan kamera opsional. Kamera ini dapat mengambil snapshot ketika peristiwa tertentu terjadi seperti, mobil mulai bergerak, membuka atau menutup pintu. Jenis lain dari aksesoris dapat ditambahkan seperti sensor bahan bakar, dan bahkan pembaca RFID.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	sensor suhu sangat penting jika kendaraan memiliki unit pendingin yang perlu dipantau, sensor dapat mengirim peringatan jika suhu tiba-tiba berfluktuasi. RFID memungkinkan untuk kendaraan yang akan dioperasikan oleh individu terpilih yang membawa kartu RFID, ini merupakan salah satu ukuran keamanan yang lebih untuk memiliki kendaraan yang hanya harus dioperasikan oleh personil yang dipilih.</p>\r\n', '49c41eff3101cb6e879e7006a5e3aaf6.jpg,2d1516d8544b8f578e32c30dae845cd6.jpg,f81eb87a5e7ff44101d705fd90b4bf38.jpg,d5557d3527ada33eb9628b8249a4e7a2.jpg,d5557d3527ada33eb9628b8249a4e7a2.jpg', 1462746398),
+(6, 2, 'MVT380', 1100000, 20, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">GPS Tracker MVT 380 adalah alat pelacak GPS / GSM / GPRS yang khusus dirancang untuk mengetahui posisi kendaraan secara langsung.Dapat berguna untuk fungsi pengawasan dan pengamanan, serta menghindari dari pencurian kendaraan.</span></p>\r\n', '89ff01176d1dd758c55521a53f268bf9.jpg,b76227033f12fa722f150a6187329837.jpg,37f51beceeb10a3183f17225f7380d9d.jpg,8387558d20e44ec25dd93a5d8eab6801.jpg,8387558d20e44ec25dd93a5d8eab6801.jpg', 1462746523),
+(8, 3, 'T8803', 600000, 10, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">GPS TRACKER T8803 INI mempunyai tingkat kestabilan tinggi dari GPS dan GSM Module. Keakuratan perangkat dapat tercapai antara 5-10 meter dan tahan terhadap air.</span></p>\r\n', '6af593ed84c160bd407d58624205fafa.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg,31d4c87f6821234ff0e610ad5082d5a2.jpg', 1462746634),
 (10, 1, 'GPS Tracker GT06N', 800000, 10, '<p>\r\n	<span style="color: rgb(102, 102, 102); font-family: ''Open Sans'', sans-serif; font-size: 13px; line-height: 20px;">Gps Tracker GT06N versi terbaru ini merupakan keluaran terbaru dari Concox yang menyempurnakan produk GT06N dengan versi sebelumnya. Versi terbarunya memiliki fitur tambahan yaitu bisa mengecek Pulsa melalui SMS.</span></p>\r\n', '5725a7967b94a662c25538bef15b9c29.jpg,9041de7f9f92eb7b4af94777f86d01b3.jpg,bf1d73b2d2d68a78c5d62962fdc3ca70.jpg,1d571a4b72b3427b988b3b5766c4ec4c.jpg,1d571a4b72b3427b988b3b5766c4ec4c.jpg', 1462747128),
 (11, 1, 'GPS Tracker ET200', 500000, 10, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	GPS Tracker handal dengan harga yang terjangkau. Bisa di monitor lewat website(server) atau dengan sms dari gadget/ponsel Anda. Cara pemasangan pun cukup mudah sekali. Karena ukurannya yang kecil dan ringan, ET200 mudah untuk disembunyikan dan mudah untuk dipasang.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Tegangan lebih rendah dari GPS lain (Posisi standby ET200 0,3 Ampere).<br style="box-sizing: border-box; outline: none;" />\r\n	Cocok untuk Anda khususnya para pemilik sepeda motor.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	<span style="font-size:14px;"><strong>Fitur ET200 :</strong></span><br style="box-sizing: border-box; outline: none;" />\r\n	- Cek posisi via sms dan webtracking<br style="box-sizing: border-box; outline: none;" />\r\n	- Mematikan dan menghidupkan mesin<br style="box-sizing: border-box; outline: none;" />\r\n	- Laporan mesin mati/hidup (sms dan Web)<br style="box-sizing: border-box; outline: none;" />\r\n	- Laporan SOS bila alat di sabotase<br style="box-sizing: border-box; outline: none;" />\r\n	- Riwayat perjalanan 30hari<br style="box-sizing: border-box; outline: none;" />\r\n	- Lihat kecepatan<br style="box-sizing: border-box; outline: none;" />\r\n	- Pembatasan kecepatan (speed limit)<br style="box-sizing: border-box; outline: none;" />\r\n	- Pembatasan area (geofence)<br style="box-sizing: border-box; outline: none;" />\r\n	- Cek pulsa<br style="box-sizing: border-box; outline: none;" />\r\n	- Backup Baterai<br style="box-sizing: border-box; outline: none;" />\r\n	- Free Server (gps-trace)<br style="box-sizing: border-box; outline: none;" />\r\n	- Water resistance (Tahan cipratan air dan debu).</p>\r\n', '28b3736c53b7e1903e58fdb11940ed1f.jpg,5b8b1b62b06f281bd1fd676922bff976.jpg,5b8b1b62b06f281bd1fd676922bff976.jpg,5b8b1b62b06f281bd1fd676922bff976.jpg,5b8b1b62b06f281bd1fd676922bff976.jpg', 1462747242),
-(12, 1, 'VT300', 1100000, 101, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	GPS Tracker / GPS Tracking VT 300 adalah alat pelacak GPS / GSM / GPRS yang khusus dirancang untuk mengetahui posisi kendaraan secara langsung. Biasanya berguna untuk fungsi pengawasan dan pengamanan, serta menghindari dari pencurian kendaraan.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Dengan modul GPS dan GPRS kualitas terbaik, GPS Tracker / GPS Tracking VT 300 memiliki kepekaan signal satelit yang sangat baik dan performa stabil. Akurasi yang sangat tepat bahkan di tempat-tempat terpencil.</p>\r\n', 'a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg', 1462746556);
+(12, 2, 'VT300', 1100000, 101, '<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	GPS Tracker / GPS Tracking VT 300 adalah alat pelacak GPS / GSM / GPRS yang khusus dirancang untuk mengetahui posisi kendaraan secara langsung. Biasanya berguna untuk fungsi pengawasan dan pengamanan, serta menghindari dari pencurian kendaraan.</p>\r\n<p style="box-sizing: border-box; outline: none; margin: 0px 0px 15px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20px; font-family: ''Open Sans'', sans-serif; font-size: 13px; color: rgb(102, 102, 102);">\r\n	Dengan modul GPS dan GPRS kualitas terbaik, GPS Tracker / GPS Tracking VT 300 memiliki kepekaan signal satelit yang sangat baik dan performa stabil. Akurasi yang sangat tepat bahkan di tempat-tempat terpencil.</p>\r\n', 'a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg,a14e6178de25ab8110bb7a48ef8365b8.jpg', 1462746556),
+(13, 4, 'Cootrack', 0, 0, 'Info lebih lanjut, silahkan hubungi Kami.', 'cootrack1.jpg,cootrack2.jpg,cootrack3.jpg,cootrack4.jpg,', 1462746556),
+(14, 4, 'ID-GPSTracker', 0, 0, 'Info lebih lanjut, silahkan hubungi Kami.', 'idgps.jpg,idgps1.jpg,idgps.jpg2,idgps3.jpg,', 1462746556),
+(15, 4, 'TRAX.CENTER', 0, 0, 'TRAX Center, server lokal dengan banyak fitur. Seperti; Realtime Update, Push Notification, dan Mail Notification & Remote Cut Off.\r\nDi situs resminya, Anda juga disuguhkan User Interface yang cukup menarik. Adanya video ilustrasi, contoh penggunaan dan bahkan cara pemasangan GPS Tracker memungkin bagi kaum awam mudah memahaminya.\r\n', 'trax.jpg,trax (1).jpg,,,', 0),
+(16, 4, 'track.powertrack.co.id', 0, 0, 'POWERTrack, memungkinkan untuk mengakses fitur pengaturan dan pelacakan yang paling umum, memonitor posisi objek di peta, mendapatkan informasi rinci seperti; kecepatan, koordinat, alamat, riwayat pergerakan dan banyak lagi', 'power.jpg,,,,', 0);
 
 -- --------------------------------------------------------
 
@@ -744,7 +749,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `no_telp` char(20) NOT NULL,
   `tgl_daftar` char(20) NOT NULL,
   `aktif` char(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -753,7 +758,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id_user`, `id_provinces`, `id_regencies`, `username`, `email`, `pass`, `nama_depan`, `nama_belakang`, `alamat`, `kode_pos`, `no_telp`, `tgl_daftar`, `aktif`) VALUES
 (1, '33', '3374', 'agung', 'agungprabowo112@gmail.com', 'e59cd3ce33a68f536c19fedb82a7936f', 'agung', 'prabowo', 'jl.bendungan 1135', '50245', '085225189794', '110696', ''),
 (2, '33', '3374', 'agung prabowo', 'agungprabowo112@gmail.com', '68d616be81074a698db50c173542dfa9', 'agung prabowo', '', 'jl.bendungan 1135', '', '085225189749', '1461669978', 'NO'),
-(3, '19', '1901', 'admin', 'toptracker05@yahoo.com', '0cc175b9c0f1b6a831c399e269772661', 'agung prabowo', '', 'aa', '', '085225189749', '1461670693', 'NO');
+(3, '19', '1901', 'admin', 'toptracker05@yahoo.com', '0cc175b9c0f1b6a831c399e269772661', 'agung prabowo', '', 'aa', '', '085225189749', '1461670693', 'NO'),
+(4, '0', '0', '', '', 'd41d8cd98f00b204e9800998ecf8427e', '', '', '', '', '', '1463059077', 'NO');
 
 --
 -- Indexes for dumped tables
@@ -815,22 +821,22 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_kategori` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id_pesanan` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_produk` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
